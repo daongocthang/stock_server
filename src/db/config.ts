@@ -26,7 +26,13 @@ const sequelizeConnection = new Sequelize(dbName, dbUser, dbPassword, {
     idle: 10000,
   },
   dialectOptions: {
-    useUTC: true,
+    typeCast: function (field: any, next: Function) {
+      // for reading from database
+      if (field.type === "DATETIME") {
+        return field.string();
+      }
+      return next();
+    },
   },
   operatorsAliases,
   timezone: "+07:00",

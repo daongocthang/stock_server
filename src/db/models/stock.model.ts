@@ -1,4 +1,4 @@
-import { DataTypes, Model } from "sequelize";
+import { CreateOptions, DataTypes, Model } from "sequelize";
 import sequelizeConnection from "../config";
 import { Stock, StockCreation } from "../schemas/stock.schema";
 
@@ -7,8 +7,8 @@ class StockModel extends Model<Stock, StockCreation> implements Stock {
   ticker!: string;
   shares!: number;
   price!: number;
-  createdAt!: string;
-  updatedAt!: string;
+  createdAt!: CreateOptions<Date>;
+  updatedAt!: CreateOptions<Date>;
 }
 
 StockModel.init(
@@ -30,17 +30,10 @@ StockModel.init(
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    createdAt: {
-      type: DataTypes.STRING,
-    },
-    updatedAt: {
-      type: DataTypes.STRING,
-    },
   },
   {
     sequelize: sequelizeConnection,
     tableName: "stocks",
-    timestamps: false,
   }
 );
 
