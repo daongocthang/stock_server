@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
+import { IController } from "..";
 import { StockService } from "../../db/services/stock.service";
-import { IController } from "../../interfaces";
 import { BadRequestError } from "../../middlewares/error.middleware";
 
 export default class StockController implements IController {

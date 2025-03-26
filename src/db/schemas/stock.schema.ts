@@ -9,8 +9,3 @@ export type Stock = {
 };
 
 export type StockCreation = Optional<Stock, "id">;
-export type StockUpdate = {
-  ticker?: string;
-  shares?: number;
-  price?: number;
-};

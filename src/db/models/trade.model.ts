@@ -27,7 +27,7 @@ TradeModel.init(
     price: { type: DataTypes.FLOAT, defaultValue: 0 },
     matchedDate: DataTypes.STRING,
     purchasePrice: DataTypes.FLOAT,
-    sellOrder: { type: DataTypes.INTEGER, defaultValue: 0 },
+    sellOrder: { type: DataTypes.BOOLEAN, defaultValue: false },
   },
   { sequelize: sequelizeConnection, tableName: "trades" }
 );

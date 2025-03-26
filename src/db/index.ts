@@ -1,11 +1,12 @@
 import { developing } from "./config";
 import StockModel from "./models/stock.model";
+import TradeModel from "./models/trade.model";
 import { StockService } from "./services/stock.service";
 export const DATE_FORMAT = "YYYY-MM-DD HH:mm:ss";
 
 const dbInit = async () => {
   await StockModel.sync({ alter: developing });
-  // TradeModel.sync({ alter: developing });
+  await TradeModel.sync({ alter: developing });
 
   let count = await StockService.count();
   if (count === 0)
