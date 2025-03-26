@@ -6,6 +6,8 @@ export type Stock = {
   ticker: string; //ma chung khoan
   shares: number; //co phan dang nam giu
   price: number; //gia mua
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export type StockCreation = Optional<Stock, "id">;
