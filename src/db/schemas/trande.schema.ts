@@ -1,18 +1,12 @@
 import { Optional } from "sequelize";
 
-export type TradeType = {
+export type Trade = {
   id: number;
   ticker: string; // ma co phieu
   shares: number; // co phan
   price: number; // gia khop lenh
-  purchasePrice: number; // gia mua
-  type: number; // loai lenh
+  matchedDate: string;
+  purchasePrice: number | undefined; // gia mua
+  sellOrder: boolean; // loai lenh
 };
-export type TradeCreation = Optional<TradeType, "id">;
-export type TradeUpdate = {
-  ticker?: string;
-  shares?: number;
-  price?: number;
-  purchasePrice?: number;
-  type?: number;
-};
+export type TradeCreation = Optional<Trade, "id">;

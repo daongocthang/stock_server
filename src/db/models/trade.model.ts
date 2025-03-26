@@ -1,16 +1,18 @@
 import { CreationOptional, DataTypes, Model } from "sequelize";
 import sequelizeConnection from "../config";
-import { TradeCreation, TradeType } from "../schemas/trande.schema";
+import { Trade, TradeCreation } from "../schemas/trande.schema";
 
-class TradeModel extends Model<TradeType, TradeCreation> {
-  declare id: number;
-  declare ticker: string;
-  declare shares: number;
-  declare price: number;
-  declare purchasePrice: number;
-  declare type: number;
-  declare createdAt: CreationOptional<Date>;
-  declare updatedAt: CreationOptional<Date>;
+class TradeModel extends Model<Trade, TradeCreation> implements Trade {
+  id!: number;
+  ticker!: string;
+  shares!: number;
+  price!: number;
+  matchedDate!: string;
+  purchasePrice!: number | undefined;
+  sellOrder!: boolean;
+
+  createdAt!: CreationOptional<Date>;
+  updatedAt!: CreationOptional<Date>;
 }
 
 TradeModel.init(
@@ -23,8 +25,9 @@ TradeModel.init(
     ticker: { type: DataTypes.STRING, allowNull: false },
     shares: { type: DataTypes.INTEGER, defaultValue: 0 },
     price: { type: DataTypes.FLOAT, defaultValue: 0 },
+    matchedDate: DataTypes.STRING,
     purchasePrice: DataTypes.FLOAT,
-    type: { type: DataTypes.INTEGER, defaultValue: 0 },
+    sellOrder: { type: DataTypes.INTEGER, defaultValue: 0 },
   },
   { sequelize: sequelizeConnection, tableName: "trades" }
 );

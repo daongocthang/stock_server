@@ -1,7 +1,9 @@
 import { Router } from "express";
-import todoRouter from "./todo.routes";
+import stockRouter from "./stock.routes";
+import tradeRouter from "./trade.routes";
 
 const apiRouter = Router();
-apiRouter.use("/todos", todoRouter);
+apiRouter.use("/stocks", stockRouter);
+apiRouter.use("/trades", tradeRouter);
 
 export default apiRouter;
